@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Main layout container -->
+  <main class="container">
+    <!-- Centered application card -->
+    <div class="card">
+      <header class="card-header">
+        <h1>Temperature Converter</h1>
+        <p class="subtitle">Convert temperatures between Celsius, Fahrenheit and Kelvin</p>
+      </header>
+
+      <!-- Converter form controls -->
+      <div class="converter-form">
+        <!-- Temperature Value Input -->
+        <div class="form-group">
+          <label for="temp-input">Enter Temperature</label>
+          <input 
+            type="number" 
+            id="temp-input" 
+            placeholder="Enter temperature" 
+            step="any"
+            autocomplete="off"
+          >
+        </div>
+
+        <!-- Unit Selection Dropdowns -->
+        <div class="unit-group">
+          <div class="form-group">
+            <label for="from-unit">From</label>
+            <select id="from-unit">
+              <option value="Celsius" selected>Celsius (°C)</option>
+              <option value="Fahrenheit">Fahrenheit (°F)</option>
+              <option value="Kelvin">Kelvin (K)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="to-unit">To</label>
+            <select id="to-unit">
+              <option value="Celsius">Celsius (°C)</option>
+              <option value="Fahrenheit" selected>Fahrenheit (°F)</option>
+              <option value="Kelvin">Kelvin (K)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Convert Action Button -->
+        <button type="button" id="convert-btn" class="btn btn-primary">Convert</button>
+
+        <!-- Result / Error Display Container -->
+        <div id="result-container" class="result-container" aria-live="polite"></div>
+
+        <!-- Clear Action Button -->
+        <button type="button" id="clear-btn" class="btn btn-secondary">Clear</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

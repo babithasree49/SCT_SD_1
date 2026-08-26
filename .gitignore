@@ -1,0 +1,10 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE Directories
+.vscode/
+.idea/
+*.swp
+*.swo
