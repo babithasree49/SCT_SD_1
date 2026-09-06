@@ -51,7 +51,7 @@ This application converts temperature values between **Celsius (°C)**, **Fahren
 Because this project uses vanilla technologies with no build steps or dependencies:
 
 1. Clone or download this repository.
-2. Open `index.html` directly in any web browser (Double-click `index.html` or drag it into your browser).
+2. Open `SCT_SD_1.html` directly in any web browser (Double-click `SCT_SD_1.html` or drag it into your browser).
 3. *(Optional)* Alternatively, serve locally using a local development server such as VS Code Live Server or Python:
    ```bash
    python -m http.server 8000
@@ -65,9 +65,9 @@ Because this project uses vanilla technologies with no build steps or dependenci
 ```text
 SCT_SD_1/
 │
-├── index.html       # Application HTML structure
-├── style.css        # Custom CSS styles & color palette
-├── script.js        # JavaScript validation & conversion logic
+├── SCT_SD_1.html    # Application HTML structure
+├── SCT_SD_1.css     # Custom CSS styles & color palette
+├── SCT_SD_1.js      # JavaScript validation & conversion logic
 ├── img1.png         # Initial interface screenshot
 ├── img2.png         # Conversion result screenshot
 ├── README.md        # Project documentation
