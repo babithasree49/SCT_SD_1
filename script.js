@@ -1,5 +1,5 @@
 /**
- * SkillCraft Technology Internship - Task 01: Temperature Converter
+ * Temperature Converter
  * Vanilla JavaScript (ES6) logic for temperature conversions and DOM interactions.
  */
 

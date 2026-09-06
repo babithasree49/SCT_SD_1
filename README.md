@@ -1,6 +1,6 @@
 # Temperature Converter
 
-A lightweight, accessible, and responsive Temperature Converter web application developed for **SkillCraft Technology Software Development Internship – Task 01**.
+A lightweight, accessible, and responsive Temperature Converter web application.
 
 ---
 
@@ -65,13 +65,13 @@ Because this project uses vanilla technologies with no build steps or dependenci
 ```text
 SCT_SD_1/
 │
-├── index.html              # Application HTML structure
-├── style.css               # Custom CSS styles & color palette
-├── script.js               # JavaScript validation & conversion logic
-├── screenshot_initial.png  # Initial application state screenshot
-├── screenshot_result.png   # Conversion result state screenshot
-├── README.md               # Project documentation
-└── .gitignore              # Git ignore rules for system files
+├── index.html       # Application HTML structure
+├── style.css        # Custom CSS styles & color palette
+├── script.js        # JavaScript validation & conversion logic
+├── img1.png         # Initial interface screenshot
+├── img2.png         # Conversion result screenshot
+├── README.md        # Project documentation
+└── .gitignore       # Git ignore rules for system files
 ```
 
 ---
@@ -79,10 +79,10 @@ SCT_SD_1/
 ## 🖼️ Screenshots
 
 ### Initial Application State
-![Temperature Converter Initial State](screenshot_initial.png)
+![Initial State](img1.png)
 
-### Conversion Result State (36 °C → 96.80 °F)
-![Temperature Converter Conversion Result](screenshot_result.png)
+### Conversion Result State
+![Conversion Result](img2.png)
 
 ---
 
