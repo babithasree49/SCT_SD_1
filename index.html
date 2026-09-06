@@ -11,6 +11,8 @@
   <main class="container">
     <!-- Centered application card -->
     <div class="card">
+      <div class="card-accent-bar"></div>
+      
       <header class="card-header">
         <h1>Temperature Converter</h1>
         <p class="subtitle">Convert temperatures between Celsius, Fahrenheit and Kelvin</p>
@@ -28,6 +30,14 @@
             step="any"
             autocomplete="off"
           >
+          
+          <!-- Quick Preset Chips -->
+          <div class="preset-chips">
+            <button type="button" class="chip" data-temp="0" data-unit="Celsius">🧊 0°C</button>
+            <button type="button" class="chip" data-temp="20" data-unit="Celsius">🌡️ 20°C</button>
+            <button type="button" class="chip" data-temp="37" data-unit="Celsius">🩺 37°C</button>
+            <button type="button" class="chip" data-temp="100" data-unit="Celsius">♨️ 100°C</button>
+          </div>
         </div>
 
         <!-- Unit Selection Dropdowns -->
@@ -39,6 +49,15 @@
               <option value="Fahrenheit">Fahrenheit (°F)</option>
               <option value="Kelvin">Kelvin (K)</option>
             </select>
+          </div>
+
+          <!-- Swap Units Button -->
+          <div class="swap-wrapper">
+            <button type="button" id="swap-btn" class="btn-swap" title="Swap units" aria-label="Swap units">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/>
+              </svg>
+            </button>
           </div>
 
           <div class="form-group">

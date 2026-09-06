@@ -7,9 +7,11 @@
 const tempInput = document.getElementById('temp-input');
 const fromUnitSelect = document.getElementById('from-unit');
 const toUnitSelect = document.getElementById('to-unit');
+const swapBtn = document.getElementById('swap-btn');
 const convertBtn = document.getElementById('convert-btn');
 const clearBtn = document.getElementById('clear-btn');
 const resultContainer = document.getElementById('result-container');
+const presetChips = document.querySelectorAll('.chip');
 
 /**
  * Returns the appropriate unit symbol for display.
@@ -25,6 +27,44 @@ function getUnitSymbol(unit) {
     return 'K';
   }
   return '';
+}
+
+/**
+ * Generates a human-readable formula breakdown string for the conversion.
+ * @param {number} value - Input temperature
+ * @param {string} fromUnit - Source unit
+ * @param {string} toUnit - Target unit
+ * @param {number} result - Converted temperature
+ * @returns {string} - Formatted formula text
+ */
+function getFormulaBreakdown(value, fromUnit, toUnit, result) {
+  const targetSymbol = getUnitSymbol(toUnit);
+  const formattedResult = result.toFixed(2);
+
+  if (fromUnit === toUnit) {
+    return `${value.toFixed(2)} ${targetSymbol} = ${formattedResult} ${targetSymbol}`;
+  }
+
+  if (fromUnit === 'Celsius' && toUnit === 'Fahrenheit') {
+    return `Formula: (${value} × 9/5) + 32 = ${formattedResult} ${targetSymbol}`;
+  }
+  if (fromUnit === 'Fahrenheit' && toUnit === 'Celsius') {
+    return `Formula: (${value} − 32) × 5/9 = ${formattedResult} ${targetSymbol}`;
+  }
+  if (fromUnit === 'Celsius' && toUnit === 'Kelvin') {
+    return `Formula: ${value} + 273.15 = ${formattedResult} ${targetSymbol}`;
+  }
+  if (fromUnit === 'Kelvin' && toUnit === 'Celsius') {
+    return `Formula: ${value} − 273.15 = ${formattedResult} ${targetSymbol}`;
+  }
+  if (fromUnit === 'Fahrenheit' && toUnit === 'Kelvin') {
+    return `Formula: (${value} − 32) × 5/9 + 273.15 = ${formattedResult} ${targetSymbol}`;
+  }
+  if (fromUnit === 'Kelvin' && toUnit === 'Fahrenheit') {
+    return `Formula: (${value} − 273.15) × 9/5 + 32 = ${formattedResult} ${targetSymbol}`;
+  }
+
+  return `Formula: ${formattedResult} ${targetSymbol}`;
 }
 
 /**
@@ -101,15 +141,24 @@ function convertTemperature(value, fromUnit, toUnit) {
 }
 
 /**
- * Renders the successful conversion result to the DOM.
+ * Renders the successful conversion result and formula breakdown to the DOM.
  * @param {number} value - Calculated target temperature
+ * @param {string} fromUnit - Source unit name
  * @param {string} toUnit - Target unit name
+ * @param {number} inputValue - Initial input numeric value
  */
-function displayResult(value, toUnit) {
+function displayResult(value, fromUnit, toUnit, inputValue) {
   const symbol = getUnitSymbol(toUnit);
   const formattedValue = value.toFixed(2);
+  const formula = getFormulaBreakdown(inputValue, fromUnit, toUnit, value);
   
-  resultContainer.innerHTML = `<p class="result-text">Result: ${formattedValue} ${symbol}</p>`;
+  resultContainer.innerHTML = `
+    <div class="result-card">
+      <span class="result-label">Converted Result</span>
+      <span class="result-value">Result: ${formattedValue} ${symbol}</span>
+      <span class="result-formula">${formula}</span>
+    </div>
+  `;
 }
 
 /**
@@ -117,7 +166,11 @@ function displayResult(value, toUnit) {
  * @param {string} message - Validation error text
  */
 function displayError(message) {
-  resultContainer.innerHTML = `<p class="error-text">${message}</p>`;
+  resultContainer.innerHTML = `
+    <div class="error-card">
+      <span class="error-text">${message}</span>
+    </div>
+  `;
 }
 
 /**
@@ -136,7 +189,21 @@ function handleConvert() {
   } else {
     const numValue = Number(rawValue);
     const result = convertTemperature(numValue, fromUnit, toUnit);
-    displayResult(result, toUnit);
+    displayResult(result, fromUnit, toUnit, numValue);
+  }
+}
+
+/**
+ * Swaps the selected "From" and "To" units and re-triggers conversion if input is present.
+ */
+function swapUnits() {
+  const tempFrom = fromUnitSelect.value;
+  fromUnitSelect.value = toUnitSelect.value;
+  toUnitSelect.value = tempFrom;
+
+  // Re-run conversion if user already entered a value
+  if (tempInput.value.trim() !== '') {
+    handleConvert();
   }
 }
 
@@ -154,6 +221,16 @@ function clearForm() {
 // Event Listeners
 convertBtn.addEventListener('click', handleConvert);
 clearBtn.addEventListener('click', clearForm);
+swapBtn.addEventListener('click', swapUnits);
+
+// Preset Chips Event Listeners
+presetChips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    tempInput.value = chip.getAttribute('data-temp');
+    fromUnitSelect.value = chip.getAttribute('data-unit');
+    handleConvert();
+  });
+});
 
 // Allow triggering conversion by pressing Enter while focused on input
 tempInput.addEventListener('keydown', (event) => {
