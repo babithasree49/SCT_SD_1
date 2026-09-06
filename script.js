@@ -154,7 +154,6 @@ function displayResult(value, fromUnit, toUnit, inputValue) {
   
   resultContainer.innerHTML = `
     <div class="result-card">
-      <span class="result-label">Converted Result</span>
       <span class="result-value">Result: ${formattedValue} ${symbol}</span>
       <span class="result-formula">${formula}</span>
     </div>
