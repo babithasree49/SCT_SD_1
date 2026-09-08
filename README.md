@@ -68,21 +68,9 @@ SCT_SD_1/
 ├── SCT_SD_1.html    # Application HTML structure
 ├── SCT_SD_1.css     # Custom CSS styles & color palette
 ├── SCT_SD_1.js      # JavaScript validation & conversion logic
-├── img1.png         # Initial interface screenshot
-├── img2.png         # Conversion result screenshot
 ├── README.md        # Project documentation
 └── .gitignore       # Git ignore rules for system files
 ```
-
----
-
-## 🖼️ Screenshots
-
-### Initial Application State
-![Initial State](img1.png)
-
-### Conversion Result State
-![Conversion Result](img2.png)
 
 ---
 
